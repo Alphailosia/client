@@ -1,0 +1,50 @@
+<h1>{{titre}}</h1>
+<!--<form ngForm #assignmentForm>
+  <button 
+  [disabled]="ajoutDesactive"
+  mat-stroked-button 
+         color="primary">
+    Ajouter un devoir
+  </button>
+</form>
+<form ngForm #assignmentForm class="form">
+  <mat-form-field>
+      <input matInput #nomAssignment>
+  </mat-form-field>
+
+  <button
+      mat-stroked-button
+      color="primary"
+      [disabled]="ajoutDesactive"
+  >
+  Ajout
+</button>
+</form>
+[ngClass]="{'rendu' : assignment.rendu, 'nonRendu' : !assignment.rendu, 'important':!assignment.rendu}"
+-->
+<a routerLink="/add"><button mat-flat-button color="primary">Ajouter un assignment</button></a>
+
+<div>
+  <h2>Liste des assignments :</h2>
+  <mat-paginator [length]="totalDocs"
+              [pageSize]="limit"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+              (page)="onChangePage($event)">
+</mat-paginator>
+  <mat-list *ngFor="let assignment of assignments">
+    <nav><a routerLink="/assignment/{{assignment.id}}">
+    <h3 mat-subheader>Date de rendu : {{assignment.dateDeRendu | date}}</h3>
+    <mat-list-item (click)="assignmentClique(assignment)">
+      <p *ngIf="assignment.rendu; else nonsoumis">
+        {{assignment.nom}} a été rendu par l'élève.
+      </p>
+      <!-- appRendu -->
+      <ng-template #nonsoumis>
+        <p>{{assignment.nom}} non rendu</p>
+      </ng-template>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </a></nav>
+  </mat-list>
+</div>

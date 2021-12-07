@@ -1,0 +1,17 @@
+#bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.success{
+    color: seagreen;
+}
+
+.danger{
+    color: tomato;
+}
+
+mat-checkbox{
+    color: black;
+}
