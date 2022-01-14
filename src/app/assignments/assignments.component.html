@@ -1,8 +1,8 @@
 <h1>{{titre}}</h1>
 <!--<form ngForm #assignmentForm>
-  <button 
+  <button
   [disabled]="ajoutDesactive"
-  mat-stroked-button 
+  mat-stroked-button
          color="primary">
     Ajouter un devoir
   </button>
@@ -26,6 +26,11 @@
 
 <div>
   <h2>Liste des assignments :</h2>
+  <mat-radio-group [(ngModel)]="estRendu" (ngModelChange)='getAssignments()'>
+    <mat-radio-button value="tous">Tous</mat-radio-button>
+    <mat-radio-button value="rendu">Rendu</mat-radio-button>
+    <mat-radio-button value="nonRendu">Non Rendu</mat-radio-button>
+  </mat-radio-group>
   <mat-paginator [length]="totalDocs"
               [pageSize]="limit"
               [pageSizeOptions]="[5, 10, 25, 100]"

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from './assignment.model'
- 
+
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
@@ -20,6 +20,7 @@ export class AssignmentsComponent implements OnInit {
   prevPage?: number;
   hasNextPage?: boolean;
   nextPage?: number;
+  estRendu: string='tous';
 
 
   constructor(private assignmentService:AssignmentsService) {}
@@ -38,7 +39,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   getAssignments(){
-      this.assignmentService.getAssignmentsPagine(this.page, this.limit).subscribe(data => {
+      this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.estRendu).subscribe(data => {
       this.assignments = data.docs;
       this.page = data.page;
       this.limit = data.limit;

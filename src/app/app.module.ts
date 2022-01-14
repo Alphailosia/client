@@ -15,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { FormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -44,9 +45,9 @@ const routes:Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatIconModule, MatDividerModule, 
+    MatButtonModule, MatIconModule, MatDividerModule,
     MatInputModule,MatDatepickerModule,MatNativeDateModule,
-    MatListModule,MatCardModule,MatCheckboxModule, MatSlideToggleModule, HttpClientModule, MatPaginatorModule,
+    MatListModule,MatCardModule,MatCheckboxModule, MatSlideToggleModule, HttpClientModule, MatPaginatorModule, MatRadioModule,
     FormsModule, RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
   providers: [],

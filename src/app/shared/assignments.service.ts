@@ -9,7 +9,7 @@ import { bdInitialAssignments } from './data';
 })
 export class AssignmentsService {
 
-  url = 'https://angular-intense-app.herokuapp.com/api/assignments';
+  url = 'http://localhost:8010/api/assignments'//'https://angular-intense-app.herokuapp.com/api/assignments';
 
   constructor(private httpClient:HttpClient) { }
 
@@ -51,22 +51,32 @@ export class AssignmentsService {
 
   peuplerBDAvecForkJoin(): Observable<any> {
     const appelsVersAddAssignment:any = [];
- 
+
     bdInitialAssignments.forEach((a) => {
       const nouvelAssignment = new Assignment();
- 
+
       nouvelAssignment.id = a.id;
       nouvelAssignment.nom = a.nom;
       nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
       nouvelAssignment.rendu = a.rendu;
- 
+
       appelsVersAddAssignment.push(this.addAssignment(nouvelAssignment));
     });
     return forkJoin(appelsVersAddAssignment); // renvoie un seul Observable pour dire que c'est fini
   }
 
-  getAssignmentsPagine(page:number,limit:number):Observable<any>{
-    return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit}});
+  getAssignmentsPagine(page:number,limit:number,estRendu:string):Observable<any>{
+    switch(estRendu){
+      case 'rendu':{
+        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':true}});
+      }
+      case 'nonRendu':{
+        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':false}});
+      }
+      default:{
+        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit}});
+      }
+    }
   }
- 
+
 }
