@@ -24,9 +24,10 @@ import { AddAssignmentComponent } from './assignments/add-assignment/add-assignm
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth-component/auth-component.component';
 
 const routes:Routes = [
-  {path:'', component:AssignmentsComponent},
+  {path:'', component:AuthComponent},
   {path:'home', component:AssignmentsComponent,runGuardsAndResolvers: 'always'},
   {path:'add',component:AddAssignmentComponent},
   {path:'assignment/:ind', component:AssignmentDetailComponent},
@@ -41,6 +42,7 @@ const routes:Routes = [
     AssignmentDetailComponent,
     AddAssignmentComponent,
     EditAssignmentComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

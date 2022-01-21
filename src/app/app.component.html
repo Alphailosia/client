@@ -1,7 +1,9 @@
-<h1><nav><a routerLink="/home">{{ title }}</a></nav></h1>
-<mat-slide-toggle (click)="login()">Login</mat-slide-toggle>
 
-<button mat-stroked-button color="primary" (click)="peupler()">Genérer</button>
-<button mat-stroked-button color="primary" (click)="peupler2()">Genérer</button>
+<nav>
+  <a routerLink="/home">{{ title }}</a>
+  <button mat-stroked-button color="primary" (click)="peupler()">Genérer</button>
+  <button mat-stroked-button color="primary" (click)="peupler2()">Genérer</button>
+  <button mat-stroked-button color="primary" (click)="deconnexion()">Deconnexion</button>
+</nav>
 
 <router-outlet></router-outlet>

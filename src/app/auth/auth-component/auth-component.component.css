@@ -1,0 +1,15 @@
+form{
+  display:flex;
+  flex-direction:column;
+  width:40%;
+}
+
+span{
+  margin-left: 100px;
+  color:rgb(136, 136, 240);
+}
+
+span:active{
+  margin-left: 100px;
+  color:rgb(189, 50, 50);
+}
