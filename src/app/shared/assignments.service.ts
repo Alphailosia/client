@@ -42,7 +42,9 @@ export class AssignmentsService {
       a.id = assignment.id;
       a.dateDeRendu = new Date(assignment.dateDeRendu);
       a.rendu = assignment.rendu;
-
+      a.note = assignment.note || NaN;
+      a.remarque = assignment.remarque;
+      a.matiere = assignment.matiere;
       this.addAssignment(a).subscribe(reponse =>{
         console.log(reponse)
       })
@@ -59,6 +61,10 @@ export class AssignmentsService {
       nouvelAssignment.nom = a.nom;
       nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
       nouvelAssignment.rendu = a.rendu;
+
+      nouvelAssignment.note = a.note || NaN;
+      nouvelAssignment.remarque = a.remarque;
+      nouvelAssignment.matiere = a.matiere;
 
       appelsVersAddAssignment.push(this.addAssignment(nouvelAssignment));
     });

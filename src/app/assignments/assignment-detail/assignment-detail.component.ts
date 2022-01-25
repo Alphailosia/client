@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { AuthService } from 'src/app/shared/auth.service';
+import { Matiere } from 'src/app/shared/matiere.model';
+import { MatiereService } from 'src/app/shared/matiere.service';
 import { Assignment } from '../assignment.model';
 
 @Component({
@@ -12,11 +14,13 @@ import { Assignment } from '../assignment.model';
 export class AssignmentDetailComponent implements OnInit {
 
   assignmentTransmis?:Assignment;
+  matiere?:Matiere;
 
   constructor(private assignmentService:AssignmentsService,
     private route:ActivatedRoute,
     private router:Router,
-    private authService:AuthService) { }
+    private authService:AuthService,
+    private matiereService:MatiereService) { }
 
   ngOnInit(): void {
     this.getAssignment()
@@ -47,6 +51,10 @@ export class AssignmentDetailComponent implements OnInit {
     const id = +this.route.snapshot.params['ind'];
     this.assignmentService.getAssignment(id).subscribe( assignment => {
       this.assignmentTransmis=assignment;
+      this.matiereService.getMatiere(this.assignmentTransmis!.matiere).subscribe( data => {
+        console.log(data)
+        this.matiere = data;
+      });
     })
   }
 

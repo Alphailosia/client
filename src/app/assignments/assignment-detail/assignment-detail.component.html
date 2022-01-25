@@ -1,11 +1,19 @@
-<mat-card *ngIf="assignmentTransmis"
+<mat-card *ngIf="assignmentTransmis && matiere"
     [ngClass]="{'success':assignmentTransmis.rendu,'danger':!assignmentTransmis.rendu}">
     <mat-card-title>{{ assignmentTransmis.nom }}</mat-card-title>
     <mat-card-subtitle>{{ assignmentTransmis.dateDeRendu | date }}</mat-card-subtitle>
     <nav>
         <!-- ou juste ['/assignment',assignmentTransmis.id,'edit'] = absolue  ou  [routerLink]="['edit']" = relatif -->
-            
+
     </nav>
+      <h1>Matiere</h1>
+
+      <img [src]="matiere.photoMatiere">
+
+      <h1>Prof</h1>
+
+      <img [src]="matiere.photoProf" hight="200px" width="200px">
+
     <div id="bottom">
         <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">Rendu</mat-checkbox>
         <button mat-stroked-button color="primary" (click)="onClickEdit()"  [disabled]="isAdmin()">Edit</button>
