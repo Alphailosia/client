@@ -1,19 +1,27 @@
-<p *ngIf="!connexion">S'inscire <span (click)="change()">Deja inscrit cliquez ici</span></p>
-<p *ngIf="connexion">Connexion <span (click)="change()">Pas encore inscrit cliquez ici</span></p>
-<!-- Toggle entre connexion et inscription -->
-
-
 <form ngForm class="form">
+
+  <p ngClass="title" *ngIf="!connexion">Inscription</p>
+  <p ngClass="title" *ngIf="connexion">Connexion </p>
+  <!-- Toggle entre connexion et inscription -->
+
   <mat-form-field *ngIf="!connexion"  >
-      <input matInput placeholder="Name" [(ngModel)]="name" name="user-name">
+      <input class="input" matInput placeholder="Name" [(ngModel)]="name" name="user-name">
   </mat-form-field>
+  <br>
   <mat-form-field>
     <input matInput placeholder="Email" [(ngModel)]="email" name="user-email">
 </mat-form-field>
+<br>
 <mat-form-field>
   <input matInput placeholder="Password" [(ngModel)]="password" name="user-password">
 </mat-form-field>
+<br>
+<br>
   <button mat-raised-button color="primary" (click)="validate()">
       Valider
   </button>
+  <br>
+  <br>
+  <span *ngIf="!connexion" (click)="change()">Deja inscrit cliquez ici</span>
+  <span *ngIf="connexion" (click)="change()">Pas encore inscrit cliquez ici</span>
 </form>

@@ -40,7 +40,8 @@
   <mat-list *ngFor="let assignment of assignments">
     <nav><a routerLink="/assignment/{{assignment.id}}">
     <h3 mat-subheader>Date de rendu : {{assignment.dateDeRendu | date}}</h3>
-    <mat-list-item (click)="assignmentClique(assignment)">
+    <mat-list-item (click)="assignmentClique(assignment)"
+      [ngClass]="{'rendu' : assignment.rendu, 'nonRendu' : !assignment.rendu, 'important':!assignment.rendu}">
       <p *ngIf="assignment.rendu; else nonsoumis">
         {{assignment.nom}} a été rendu par l'élève.
       </p>
