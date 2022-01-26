@@ -6,5 +6,6 @@ export class Assignment{
     rendu!:boolean;
     note!:number;
     remarque!: string;
-    matiere!: number
+    matiere!: number;
+    etudiant!: number;
 }

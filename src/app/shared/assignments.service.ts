@@ -45,6 +45,7 @@ export class AssignmentsService {
       a.note = assignment.note || NaN;
       a.remarque = assignment.remarque;
       a.matiere = assignment.matiere;
+      a.etudiant = assignment.etudiant;
       this.addAssignment(a).subscribe(reponse =>{
         console.log(reponse)
       })
@@ -65,6 +66,7 @@ export class AssignmentsService {
       nouvelAssignment.note = a.note || NaN;
       nouvelAssignment.remarque = a.remarque;
       nouvelAssignment.matiere = a.matiere;
+      nouvelAssignment.etudiant = nouvelAssignment.etudiant;
 
       appelsVersAddAssignment.push(this.addAssignment(nouvelAssignment));
     });
