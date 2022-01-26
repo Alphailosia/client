@@ -55,7 +55,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   onChangePage(pe:PageEvent){
-    this.page=pe.pageIndex
+    this.page=pe.pageIndex+1
     this.limit=pe.pageSize
     this.getAssignments()
   }
