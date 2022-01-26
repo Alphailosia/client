@@ -5,6 +5,8 @@ import { AuthService } from 'src/app/shared/auth.service';
 import { Matiere } from 'src/app/model/matiere.model';
 import { MatiereService } from 'src/app/shared/matiere.service';
 import { Assignment } from '../../model/assignment.model';
+import { EtudiantService } from 'src/app/shared/etudiant.service';
+import { Etudiant } from 'src/app/model/etudiant.model';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -15,12 +17,14 @@ export class AssignmentDetailComponent implements OnInit {
 
   assignmentTransmis?:Assignment;
   matiere?:Matiere;
+  etudiant?:Etudiant;
 
   constructor(private assignmentService:AssignmentsService,
     private route:ActivatedRoute,
     private router:Router,
     private authService:AuthService,
-    private matiereService:MatiereService) { }
+    private matiereService:MatiereService,
+    private etudiantService:EtudiantService) { }
 
   ngOnInit(): void {
     this.getAssignment()
@@ -54,6 +58,10 @@ export class AssignmentDetailComponent implements OnInit {
       this.matiereService.getMatiere(this.assignmentTransmis!.matiere).subscribe( data => {
         console.log(data)
         this.matiere = data;
+      });
+      this.etudiantService.getEtudiant(this.assignmentTransmis!.etudiant).subscribe( data => {
+        console.log(data)
+        this.etudiant = data;
       });
     })
   }
