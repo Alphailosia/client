@@ -12,6 +12,7 @@ export class AssignmentsComponent implements OnInit {
   titre = 'Gestion des assignments';
   assignmentSelectione?:Assignment;
   assignments:Assignment[] = [];
+  displayedColumns: string[] = ['id', 'nom', 'dateDeRendu', 'rendu'];
   page: number=1;
   limit: number=10;
   totalDocs?: number;

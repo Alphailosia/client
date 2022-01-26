@@ -25,6 +25,7 @@ import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assi
 import { AuthGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth-component/auth-component.component';
+import { MatTableModule } from '@angular/material/table';
 
 const routes:Routes = [
   {path:'', component:AuthComponent},
@@ -50,7 +51,7 @@ const routes:Routes = [
     MatButtonModule, MatIconModule, MatDividerModule,
     MatInputModule,MatDatepickerModule,MatNativeDateModule,
     MatListModule,MatCardModule,MatCheckboxModule, MatSlideToggleModule, HttpClientModule, MatPaginatorModule, MatRadioModule,
-    FormsModule, RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
+    FormsModule, MatTableModule, RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
   providers: [],
   bootstrap: [AppComponent]

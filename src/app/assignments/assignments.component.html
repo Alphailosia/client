@@ -26,31 +26,63 @@
 
 <div>
   <h2>Liste des assignments :</h2>
+  <!--filtre-->
   <mat-radio-group [(ngModel)]="estRendu" (ngModelChange)='getAssignments()'>
     <mat-radio-button value="tous">Tous</mat-radio-button>
     <mat-radio-button value="rendu">Rendu</mat-radio-button>
     <mat-radio-button value="nonRendu">Non Rendu</mat-radio-button>
   </mat-radio-group>
+  <!--pagination-->
   <mat-paginator [length]="totalDocs"
               [pageSize]="limit"
               [pageSizeOptions]="[5, 10, 25, 100]"
               aria-label="Select page"
               (page)="onChangePage($event)">
 </mat-paginator>
-  <mat-list *ngFor="let assignment of assignments">
-    <nav><a routerLink="/assignment/{{assignment.id}}">
-    <h3 mat-subheader>Date de rendu : {{assignment.dateDeRendu | date}}</h3>
-    <mat-list-item (click)="assignmentClique(assignment)"
-      [ngClass]="{'rendu' : assignment.rendu, 'nonRendu' : !assignment.rendu, 'important':!assignment.rendu}">
-      <p *ngIf="assignment.rendu; else nonsoumis">
-        {{assignment.nom}} a été rendu par l'élève.
-      </p>
-      <!-- appRendu -->
-      <ng-template #nonsoumis>
-        <p>{{assignment.nom}} non rendu</p>
-      </ng-template>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-  </a></nav>
-  </mat-list>
+  
+<table mat-table [dataSource]="assignments" class="mat-elevation-z8">
+  <!--<nav><a routerLink="/assignment/{{element.id}}">-->
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nom">
+    <th mat-header-cell *matHeaderCellDef> Nom du devoir </th>
+    <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dateDeRendu">
+    <th mat-header-cell *matHeaderCellDef> Date de rendu </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateDeRendu | date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rendu">
+    <th mat-header-cell *matHeaderCellDef> Etat </th>
+    <td mat-cell *matCellDef="let element" > <span *ngIf="element.rendu">Rendu </span> <span *ngIf="!element.rendu">Non rendu </span> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<!--</a></nav>-->
+</table>
+
+<!--<mat-list *ngFor="let assignment of assignments">
+  <nav><a routerLink="/assignment/{{assignment.id}}">
+  <h3 mat-subheader>Date de rendu : {{assignment.dateDeRendu | date}}</h3>
+  <mat-list-item (click)="assignmentClique(assignment)"
+    [ngClass]="{'rendu' : assignment.rendu, 'nonRendu' : !assignment.rendu, 'important':!assignment.rendu}">
+    <p *ngIf="assignment.rendu; else nonsoumis">
+      {{assignment.nom}} a été rendu par l'élève.
+    </p>-->
+    <!-- appRendu -->
+    <!--<ng-template #nonsoumis>
+      <p>{{assignment.nom}} non rendu</p>
+    </ng-template>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</a></nav>
+</mat-list>-->
+
 </div>
