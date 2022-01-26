@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { AssignmentsService } from '../shared/assignments.service';
-import { Assignment } from './assignment.model'
+import { Assignment } from '../model/assignment.model'
 
 @Component({
   selector: 'app-assignments',

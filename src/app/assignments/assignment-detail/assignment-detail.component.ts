@@ -2,9 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { AuthService } from 'src/app/shared/auth.service';
-import { Matiere } from 'src/app/shared/matiere.model';
+import { Matiere } from 'src/app/model/matiere.model';
 import { MatiereService } from 'src/app/shared/matiere.service';
-import { Assignment } from '../assignment.model';
+import { Assignment } from '../../model/assignment.model';
 
 @Component({
   selector: 'app-assignment-detail',

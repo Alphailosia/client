@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Matiere } from './matiere.model';
+import { Matiere } from '../model/matiere.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,6 @@ export class MatiereService {
   constructor(private httpClient:HttpClient) { }
 
   getMatiere(id: number):Observable<Matiere>{
-    console.log(id)
     return this.httpClient.get<Matiere>(this.url+"/"+id);
   }
 
