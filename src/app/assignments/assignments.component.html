@@ -23,7 +23,7 @@
 [ngClass]="{'rendu' : assignment.rendu, 'nonRendu' : !assignment.rendu, 'important':!assignment.rendu}"
 -->
 <a routerLink="/add"><button mat-flat-button color="primary">Ajouter un assignment</button></a>
-
+<input matInput placeholder="Recherche" [(ngModel)]="nomAssignment" (input)='getAssignments()' name="assignment-name">
 <div>
   <h2>Liste des assignments :</h2>
   <!--filtre-->
@@ -39,7 +39,7 @@
               aria-label="Select page"
               (page)="onChangePage($event)">
 </mat-paginator>
-  
+
 <table mat-table [dataSource]="assignments" class="mat-elevation-z8">
   <!--<nav><a routerLink="/assignment/{{element.id}}">-->
 

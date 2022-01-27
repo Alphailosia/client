@@ -73,16 +73,16 @@ export class AssignmentsService {
     return forkJoin(appelsVersAddAssignment); // renvoie un seul Observable pour dire que c'est fini
   }
 
-  getAssignmentsPagine(page:number,limit:number,estRendu:string):Observable<any>{
+  getAssignmentsPagine(page:number,limit:number,estRendu:string, nomAssignment:string):Observable<any>{
     switch(estRendu){
       case 'rendu':{
-        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':true}});
+        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':true,'nomAssignment':nomAssignment}});
       }
       case 'nonRendu':{
-        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':false}});
+        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':false,'nomAssignment':nomAssignment}});
       }
       default:{
-        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit}});
+        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'nomAssignment':nomAssignment}});
       }
     }
   }

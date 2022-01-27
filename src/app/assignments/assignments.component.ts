@@ -22,6 +22,7 @@ export class AssignmentsComponent implements OnInit {
   hasNextPage?: boolean;
   nextPage?: number;
   estRendu: string='tous';
+  nomAssignment: string='';
 
 
   constructor(private assignmentService:AssignmentsService) {}
@@ -40,7 +41,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   getAssignments(){
-      this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.estRendu).subscribe(data => {
+      this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.estRendu, this.nomAssignment).subscribe(data => {
       this.assignments = data.docs;
       this.page = data.page;
       this.limit = data.limit;
