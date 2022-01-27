@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from '../model/assignment.model'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assignments',
@@ -25,7 +26,9 @@ export class AssignmentsComponent implements OnInit {
   nomAssignment: string='';
 
 
-  constructor(private assignmentService:AssignmentsService) {}
+  constructor(
+    private router:Router,
+    private assignmentService:AssignmentsService) {}
 
   ngOnInit(): void {
     this.getAssignments();
@@ -38,6 +41,10 @@ export class AssignmentsComponent implements OnInit {
   assignmentClique(assignment:any){
     this.assignmentSelectione=assignment;
     console.log(this.assignmentSelectione)
+  }
+
+  goToDetail(row:any){
+    this.router.navigate([`/assignment/${row.id}`])
   }
 
   getAssignments(){

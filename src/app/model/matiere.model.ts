@@ -3,5 +3,6 @@ export class Matiere{
   id!:number;
   nom!:string;
   photoMatiere!:string;
-  photoProf!:string
+  photoProf!:string;
+  nomProf!: string;
 }
