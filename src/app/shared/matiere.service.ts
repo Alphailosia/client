@@ -16,4 +16,8 @@ export class MatiereService {
     return this.httpClient.get<Matiere>(this.url+"/"+id);
   }
 
+  getMatieres():Observable<Matiere[]>{
+    return this.httpClient.get<Matiere[]>(this.url);
+  }
+
 }

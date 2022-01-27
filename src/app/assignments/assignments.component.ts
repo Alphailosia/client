@@ -3,6 +3,10 @@ import { PageEvent } from '@angular/material/paginator';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from '../model/assignment.model'
 import { Router } from '@angular/router';
+import { Matiere } from '../model/matiere.model';
+import { Etudiant } from '../model/etudiant.model';
+import { MatiereService } from '../shared/matiere.service';
+import { EtudiantService } from '../shared/etudiant.service';
 
 @Component({
   selector: 'app-assignments',
@@ -13,7 +17,9 @@ export class AssignmentsComponent implements OnInit {
   titre = 'Gestion des assignments';
   assignmentSelectione?:Assignment;
   assignments:Assignment[] = [];
-  displayedColumns: string[] = ['id', 'nom', 'dateDeRendu', 'rendu'];
+  matieres:Matiere[] = [];
+  etudiants:Etudiant[] = [];
+  displayedColumns: string[] = ['id', 'nom', 'dateDeRendu','matiere','etudiant', 'rendu'];
   page: number=1;
   limit: number=10;
   totalDocs?: number;
@@ -28,9 +34,13 @@ export class AssignmentsComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private assignmentService:AssignmentsService) {}
+    private assignmentService:AssignmentsService,
+    private matiereService:MatiereService,
+    private etudiantService:EtudiantService) {}
 
   ngOnInit(): void {
+    this.getMatieres();
+    this.getEtudiants();
     this.getAssignments();
   }
 
@@ -45,6 +55,26 @@ export class AssignmentsComponent implements OnInit {
 
   goToDetail(row:any){
     this.router.navigate([`/assignment/${row.id}`])
+  }
+
+  getMatieres(){
+    this.matiereService.getMatieres().subscribe(matieres =>{
+      this.matieres = matieres
+    })
+  }
+
+  getEtudiants(){
+    this.etudiantService.getEtudiants().subscribe(etudiants =>{
+      this.etudiants = etudiants
+    })
+  }
+
+  getNomMatiere(element:any){
+    return this.matieres.find(n => n.id === element.matiere)!.nom
+  }
+
+  getNomEtudiant(element:any){
+    return this.etudiants.find(n => n.id === element.etudiant)!.nom+" "+this.etudiants.find(n => n.id === element.etudiant)!.prenom
   }
 
   getAssignments(){
