@@ -1,16 +1,28 @@
-<mat-card *ngIf="assignmentTransmis && matiere"
+<mat-card *ngIf="assignmentTransmis && matiere && etudiant"
     [ngClass]="{'success':assignmentTransmis.rendu,'danger':!assignmentTransmis.rendu}">
-    <mat-card-title>{{ assignmentTransmis.nom }}</mat-card-title>
-    <mat-card-subtitle>{{ assignmentTransmis.dateDeRendu | date }}</mat-card-subtitle>
+    
+    <h1>Détails de l'assignement</h1>
+
+    <h2>Etudiant</h2>
+
+    <p> Nom : {{etudiant.nom}} </p>
+    <p> Prénom : {{etudiant.prenom}} </p>
+    <p> Promo : {{etudiant.promo}} </p>
+
+
+    <h2>Devoir</h2>
+
+    <p> Type de devoir : {{ assignmentTransmis.nom }}</p>
+    <p> Date de rendu : {{ assignmentTransmis.dateDeRendu | date }}</p>
     <nav>
         <!-- ou juste ['/assignment',assignmentTransmis.id,'edit'] = absolue  ou  [routerLink]="['edit']" = relatif -->
 
     </nav>
-      <h1>Matiere</h1>
+      <p>Matiere : {{matiere.nom}}</p> 
 
       <img [src]="matiere.photoMatiere">
 
-      <h1>Prof</h1>
+      <p>Enseigné par : </p>
 
       <img [src]="matiere.photoProf" hight="200px" width="200px">
 
