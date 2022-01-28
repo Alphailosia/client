@@ -1,7 +1,13 @@
-<nav>
-  <a routerLink="/home"><mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
-  <button mat-stroked-button color="primary" (click)="deconnexion()">Deconnexion</button>
-</nav>
+<div class="body">
+<div class="home-div">
+  <nav>
+    <a routerLink="/home">
+      <mat-icon class="home" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    </a>
+    <button class="deconnexion" mat-stroked-button color="primary" (click)="deconnexion()">Deconnexion</button>
+  </nav>
+</div>
+
 <mat-card *ngIf="assignmentTransmis && matiere && etudiant" >
 
   <h1>Détails de l'assignement</h1>
@@ -50,3 +56,4 @@
     <button mat-raised-button color="primary" (click)="onDelete()">Delete</button>
   </div>
 </mat-card>
+</div>

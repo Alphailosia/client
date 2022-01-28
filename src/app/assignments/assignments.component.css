@@ -1,7 +1,8 @@
 h1 {
   display: flex;
   justify-content: center;
-  padding-top:30px;
+  font-family: Georgia;
+  font-size: 3em;
 }
 
 .rendu {
@@ -34,6 +35,7 @@ tr:hover {
   height: 100%;
   width: 100%;
   position: relative;
+  font-family: Georgia;
 }
 
 .search-div {
@@ -46,4 +48,31 @@ tr:hover {
 .search {
   border: 1px solid;
   margin-right: 5px;
+}
+
+.home-div {
+  margin: 10px;
+}
+
+.home {
+  margin-top: 15px;
+  font-size: 2em;
+}
+
+.deconnexion {
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.ajout-div {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 20px;
+  display: flex;
+}
+
+.ajout {
+  margin-right: 20px;
 }

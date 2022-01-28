@@ -1,9 +1,13 @@
 <div class="body">
 
-  <nav>
-    <a routerLink="/home"><mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
-    <button mat-stroked-button color="primary" (click)="deconnexion()">Deconnexion</button>
-  </nav>
+  <div class="home-div">
+    <nav>
+      <a routerLink="/home">
+        <mat-icon class="home" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+      </a>
+      <button class="deconnexion" mat-stroked-button color="primary" (click)="deconnexion()">Deconnexion</button>
+    </nav>
+  </div>
 
   <h1>{{titre}}</h1>
   <!--<form ngForm #assignmentForm>
@@ -29,7 +33,6 @@
 </form>
 [ngClass]="{'rendu' : assignment.rendu, 'nonRendu' : !assignment.rendu, 'important':!assignment.rendu}"
 -->
-  <a routerLink="/add"><button mat-flat-button color="primary">Ajouter un assignment</button></a>
   <div class="search-div">
     <input class="search" matInput placeholder="Recherche" [(ngModel)]="nomAssignment" (input)='getAssignments()'
       name="assignment-name">
@@ -89,6 +92,10 @@
       (page)="onChangePage($event)">
     </mat-paginator>
 
+    <div class="ajout-div">
+      <p class="ajout">Nouvel assignment : </p>
+    <a routerLink="/add"><button mat-flat-button color="primary">Ajouter</button></a>
+  </div>
     <!--<mat-list *ngFor="let assignment of assignments">
   <nav><a routerLink="/assignment/{{assignment.id}}">
   <h3 mat-subheader>Date de rendu : {{assignment.dateDeRendu | date}}</h3>
