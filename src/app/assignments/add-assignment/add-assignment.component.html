@@ -1,6 +1,40 @@
-<form ngForm #assignmentForm class="form">
+<mat-stepper orientation="vertical">
+  <mat-step>
+    <mat-form-field #etudiantForm class="form">
+      <ng-template matStepLabel>Choix de l'étudiant</ng-template>
+        <mat-label>Étudiant</mat-label>
+        <mat-select [(ngModel)]="etudiant" required>
+          <mat-option *ngFor="let student of students" [value]="student.value">
+            {{student.viewValue}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Matière</ng-template>
+    <ng-template matStepContent>
+      <mat-form-field #etudiantForm class="form">
+        <ng-template matStepLabel>Choix de la matière</ng-template>
+          <mat-label>Matière</mat-label>
+          <mat-select [(ngModel)]="matiere" required>
+            <mat-option *ngFor="let matiere of matieres" [value]="matiere.value">
+              {{matiere.viewValue}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Choix du devoir</ng-template>
     <mat-form-field>
-      <input matInput #nomAssignment placeholder="nom du devoir" [(ngModel)]="nomDevoir" name="nom">
+      <input matInput #nomAssignment placeholder="nom du devoir" [(ngModel)]="nomDevoir" name="nom" required>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
@@ -9,7 +43,9 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <br>
-  
-    <button mat-stroked-button color="primary" (click)="onSubmit(); assignmentForm.reset();">Ajout</button>
-  </form>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-stroked-button color="primary" (click)="onSubmit();">Ajout</button>
+    </div>
+  </mat-step>
+</mat-stepper>

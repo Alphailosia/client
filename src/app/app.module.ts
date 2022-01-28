@@ -15,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
+import {MatStepperModule} from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { FormsModule } from '@angular/forms';
@@ -26,6 +27,7 @@ import { AuthGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth-component/auth-component.component';
 import { MatTableModule } from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
 
 const routes:Routes = [
   {path:'', component:AuthComponent},
@@ -46,7 +48,7 @@ const routes:Routes = [
     AuthComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,MatStepperModule,MatSelectModule,
     BrowserAnimationsModule,
     MatButtonModule, MatIconModule, MatDividerModule,
     MatInputModule,MatDatepickerModule,MatNativeDateModule,
