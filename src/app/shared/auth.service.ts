@@ -9,6 +9,7 @@ export class AuthService {
 
   url = 'http://localhost:8010/api/'//'https://angular-intense-app.herokuapp.com/api/';
   auth = false;
+  admin = false
 
   register(name:String, email: String, password: String): Observable<any> {
     return  this.httpClient.post<any>(this.url+'register',{params:{'name':name, 'password':password,'email':email}})
@@ -24,10 +25,14 @@ export class AuthService {
 
   isAdmin(){
     let isUserAdmin = new Promise((resolve, reject) => {
-      resolve(this.auth);
+      resolve(this.admin);
     })
 
     return isUserAdmin;
+  }
+
+  checkAdmin(password:string):Observable<any>{
+    return this.httpClient.get<any>(this.url+'admin',{params:{'password':password}})
   }
 
   constructor(private httpClient:HttpClient) { }

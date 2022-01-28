@@ -20,14 +20,15 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { FormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
+import { AssignmentDetailComponent, DialogOverviewExampleDialog } from './assignments/assignment-detail/assignment-detail.component';
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth-component/auth-component.component';
 import { MatTableModule } from '@angular/material/table';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const routes:Routes = [
   {path:'', component:AuthComponent},
@@ -46,10 +47,11 @@ const routes:Routes = [
     AddAssignmentComponent,
     EditAssignmentComponent,
     AuthComponent,
+    DialogOverviewExampleDialog,
   ],
   imports: [
     BrowserModule,MatStepperModule,MatSelectModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,MatDialogModule,
     MatButtonModule, MatIconModule, MatDividerModule,
     MatInputModule,MatDatepickerModule,MatNativeDateModule,
     MatListModule,MatCardModule,MatCheckboxModule, MatSlideToggleModule, HttpClientModule, MatPaginatorModule, MatRadioModule,

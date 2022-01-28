@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Rentrer le mot de passe d'administrateur svp</h1>
+<mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Mot de passe</mat-label>
+    <input matInput type="password" [(ngModel)]="data.admin">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No</button>
+  <button mat-button [mat-dialog-close]="data.admin" cdkFocusInitial>Envoyer</button>
+</mat-dialog-actions>
