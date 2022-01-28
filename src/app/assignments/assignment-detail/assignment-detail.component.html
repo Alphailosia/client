@@ -1,5 +1,4 @@
-<mat-card *ngIf="assignmentTransmis && matiere && etudiant"
-  [ngClass]="{'success':assignmentTransmis.rendu,'danger':!assignmentTransmis.rendu}">
+<mat-card *ngIf="assignmentTransmis && matiere && etudiant" >
 
   <h1>Détails de l'assignement</h1>
 
@@ -18,8 +17,8 @@
       <p> Date de rendu : {{ assignmentTransmis.dateDeRendu | date }}</p>
     </div>
     <div class="contenu">
-      <p> Note : {{ assignmentTransmis.note }}</p>
-      <p> Remarque : {{ assignmentTransmis.remarque}}</p>
+      <p [ngClass]="{'success':assignmentTransmis.rendu,'danger':!assignmentTransmis.rendu}"> Note : {{ assignmentTransmis.note }}</p>
+      <p [ngClass]="{'success':assignmentTransmis.rendu,'danger':!assignmentTransmis.rendu}"> Remarque : {{ assignmentTransmis.remarque}}</p>
     </div>
   </div>
   <nav>
@@ -36,7 +35,7 @@
     </div>
     <div class="contenu">
       <p>Enseigné par : {{matiere.nomProf}}</p>
-      <img [src]="matiere.photoProf" hight="200px" width="200px">
+      <img [src]="matiere.photoProf">
     </div>
   </div>
   <br>

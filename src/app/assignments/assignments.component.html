@@ -1,3 +1,4 @@
+<div class="body">
 <h1>{{titre}}</h1>
 <!--<form ngForm #assignmentForm>
   <button
@@ -23,22 +24,20 @@
 [ngClass]="{'rendu' : assignment.rendu, 'nonRendu' : !assignment.rendu, 'important':!assignment.rendu}"
 -->
 <a routerLink="/add"><button mat-flat-button color="primary">Ajouter un assignment</button></a>
-<input matInput placeholder="Recherche" [(ngModel)]="nomAssignment" (input)='getAssignments()' name="assignment-name">
+<div class="search-div">
+<input class="search" matInput placeholder="Recherche" [(ngModel)]="nomAssignment" (input)='getAssignments()' name="assignment-name">
+<mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+</div>
 <div>
   <h2>Liste des assignments :</h2>
   <!--filtre-->
   <mat-radio-group [(ngModel)]="estRendu" (ngModelChange)='getAssignments()'>
-    <mat-radio-button value="tous">Tous</mat-radio-button>
-    <mat-radio-button value="rendu">Rendu</mat-radio-button>
-    <mat-radio-button value="nonRendu">Non Rendu</mat-radio-button>
+    <mat-radio-button value="tous">Tous </mat-radio-button>
+    <mat-radio-button value="rendu">Rendu </mat-radio-button>
+    <mat-radio-button value="nonRendu">Non Rendu </mat-radio-button>
   </mat-radio-group>
   <!--pagination-->
-  <mat-paginator [length]="totalDocs"
-              [pageSize]="limit"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page"
-              (page)="onChangePage($event)">
-</mat-paginator>
+  
 
 <table mat-table [dataSource]="assignments" class="mat-elevation-z8">
   <!--<nav><a routerLink="/assignment/{{element.id}}">-->
@@ -80,6 +79,13 @@
 <!--</a></nav>-->
 </table>
 
+<mat-paginator [length]="totalDocs"
+              [pageSize]="limit"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+              (page)="onChangePage($event)">
+</mat-paginator>
+
 <!--<mat-list *ngFor="let assignment of assignments">
   <nav><a routerLink="/assignment/{{assignment.id}}">
   <h3 mat-subheader>Date de rendu : {{assignment.dateDeRendu | date}}</h3>
@@ -97,4 +103,5 @@
 </a></nav>
 </mat-list>-->
 
+</div>
 </div>
