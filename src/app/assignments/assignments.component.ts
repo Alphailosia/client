@@ -7,6 +7,7 @@ import { Matiere } from '../model/matiere.model';
 import { Etudiant } from '../model/etudiant.model';
 import { MatiereService } from '../shared/matiere.service';
 import { EtudiantService } from '../shared/etudiant.service';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-assignments',
@@ -34,6 +35,7 @@ export class AssignmentsComponent implements OnInit {
 
   constructor(
     private router:Router,
+    private authService:AuthService,
     private assignmentService:AssignmentsService,
     private matiereService:MatiereService,
     private etudiantService:EtudiantService) {}
@@ -96,5 +98,10 @@ export class AssignmentsComponent implements OnInit {
     this.page=pe.pageIndex+1
     this.limit=pe.pageSize
     this.getAssignments()
+  }
+
+  deconnexion(){
+    this.authService.logOut();
+    this.router.navigate(['']);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
+import { AuthService } from 'src/app/shared/auth.service';
 import { Assignment } from '../../model/assignment.model'
 
 interface Etu{
@@ -40,7 +41,9 @@ export class AddAssignmentComponent implements OnInit {
   ];
   matiere!: number;
 
-  constructor(private assignmentService:AssignmentsService,
+  constructor(
+    private authService: AuthService,
+    private assignmentService:AssignmentsService,
     private router:Router) { }
 
   ngOnInit(): void {
@@ -62,5 +65,10 @@ export class AddAssignmentComponent implements OnInit {
       console.log(message);
       this.router.navigate(['/home'])
     })
+  }
+
+  deconnexion(){
+    this.authService.logOut();
+    this.router.navigate(['']);
   }
 }

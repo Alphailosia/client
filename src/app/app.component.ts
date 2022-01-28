@@ -25,9 +25,4 @@ export class AppComponent {
       this.router.navigate(['/home'],{replaceUrl:true})
     });
   }
-
-  deconnexion(){
-    this.authService.logOut();
-    this.router.navigate(['']);
-  }
 }

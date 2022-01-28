@@ -69,4 +69,10 @@ export class AssignmentDetailComponent implements OnInit {
   isAdmin(){
     return !this.authService.auth;
   }
+
+  deconnexion(){
+    this.authService.logOut();
+    this.router.navigate(['']);
+  }
+
 }
