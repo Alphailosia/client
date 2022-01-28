@@ -1,7 +1,13 @@
-<nav>
-  <a routerLink="/home"><mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
-  <button mat-stroked-button color="primary" (click)="deconnexion()">Deconnexion</button>
-</nav>
+<div class="body">
+<div class="home-div">
+  <nav>
+    <a routerLink="/home">
+      <mat-icon class="home" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    </a>
+    <button class="deconnexion" mat-stroked-button color="primary" (click)="deconnexion()">Deconnexion</button>
+  </nav>
+</div>
+<h1>Ajout d'un assignment</h1>
 <mat-stepper orientation="vertical">
   <mat-step>
     <mat-form-field #etudiantForm class="form">
@@ -53,3 +59,4 @@
     </div>
   </mat-step>
 </mat-stepper>
+</div>
