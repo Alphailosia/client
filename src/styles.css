@@ -2,3 +2,5 @@
 
 html, body { height: 100%; }
 body { margin: 30; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body { background-image: linear-gradient(-225deg, #E3FDF5 40%, #FFE6FA 60%);}
