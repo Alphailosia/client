@@ -22,6 +22,9 @@ export class AuthComponent implements OnInit {
       if(data.auth){
         this.route.navigate(['/home'])
       }
+      else{
+        this.route.navigate([''])
+      }
     })
   }
 
@@ -35,10 +38,10 @@ export class AuthComponent implements OnInit {
 
   validate(){
     if(this.connexion){
-      this.connect()
+      this.register()
     }
     else{
-      this.register()
+      this.connect()
     }
   }
 
