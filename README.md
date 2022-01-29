@@ -20,5 +20,6 @@ Sabrina Mercuri
 - Ajout d'un formulaire stepper (pour l'ajout d'assignment)
 - Pouvoir éditer un assignment sur le nom, la date de rendu, la note, remarque   
 - Ajout d'un mot de passe pour pouvoir éditer et supprimer un assignment `(mot de passe = admin)`   
+- Ajout de snack bar pour la connexion, l'inscription, l'ajout, l'édition et la suppression    
 
 
