@@ -25,7 +25,7 @@ export class AuthComponent implements OnInit {
       if (data.auth) {
         this._snackBar.openFromComponent(SnackBarComponent, {
           duration: 3000,
-          data:'connexion réussie'
+          data:'Connexion réussie'
         })
         this.route.navigate(['/home'])
       }
@@ -42,6 +42,10 @@ export class AuthComponent implements OnInit {
   register() {
     this.authService.register(this.name, this.email, this.password).subscribe(data => {
       if (data.auth) {
+        this._snackBar.openFromComponent(SnackBarComponent, {
+          duration: 3000,
+          data:'Inscription réussie'
+        })
         this.route.navigate(['/home'])
       }
     })
