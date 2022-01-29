@@ -43,6 +43,7 @@
    
     <!--filtre-->
     <div class="div-filtre">
+      <p class="title-filtre">Filtres : </p>
     <mat-select [(ngModel)]="estRendu" (focus)='getAssignments()'>
       <mat-option *ngFor="let type of types" [value]="type.value">
         {{type.viewValue}}

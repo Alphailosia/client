@@ -82,8 +82,16 @@ tr:hover {
 }
 
 mat-select {
-  width: 200px;
+  width: 180px;
   margin-top: 25px;
   margin-bottom: 10px;
-  margin-left: 10px;
+  margin-left: 20px;
+  margin-right: 5px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+}
+
+.title-filtre {
+  margin-top: 25px;
+  margin-left: 5px;
 }
