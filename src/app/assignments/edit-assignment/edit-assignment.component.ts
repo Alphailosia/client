@@ -69,7 +69,12 @@ export class EditAssignmentComponent implements OnInit {
       this.assignment=assignment;
       this.nomAssignment = assignment?.nom;
       this.dateDeRendu=assignment?.dateDeRendu;
-      this.note=assignment!.note+'' || '';
+      if(assignment?.note == null) {
+        this.note='';
+      }
+      else {
+        this.note= assignment.note+'';
+      }
       this.remarque=assignment?.remarque;
       this.matiereService.getMatiere(this.assignment!.matiere).subscribe( data => {
         this.matiere = data;

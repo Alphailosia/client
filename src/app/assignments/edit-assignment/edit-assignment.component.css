@@ -63,3 +63,8 @@ right: 0;
 margin-right: 15px;
 margin-top: 15px;
 }
+
+input {
+  border: 1px solid;
+  border-radius: 5px;
+}
