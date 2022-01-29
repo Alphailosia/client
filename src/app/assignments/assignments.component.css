@@ -76,3 +76,14 @@ tr:hover {
 .ajout {
   margin-right: 20px;
 }
+
+.div-filtre {
+  display: flex;
+}
+
+mat-select {
+  width: 200px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
