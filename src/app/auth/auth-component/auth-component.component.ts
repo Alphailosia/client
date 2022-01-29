@@ -29,13 +29,13 @@ export class AuthComponent implements OnInit {
         })
         this.route.navigate(['/home'])
       }
-      else if(data.message) {
-        this._snackBar.openFromComponent(SnackBarComponent, {
-          duration: 3000,
-          data: 'mauvais identifiants'
-        })        
-        this.route.navigate([''])
-      }
+    },
+    error =>{
+      this._snackBar.openFromComponent(SnackBarComponent, {
+        duration: 3000,
+        data: error.error
+      })
+      this.route.navigate([''])
     })
   }
 

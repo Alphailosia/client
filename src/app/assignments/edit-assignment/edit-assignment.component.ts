@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Etudiant } from 'src/app/model/etudiant.model';
 import { Matiere } from 'src/app/model/matiere.model';
@@ -6,6 +7,7 @@ import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { AuthService } from 'src/app/shared/auth.service';
 import { EtudiantService } from 'src/app/shared/etudiant.service';
 import { MatiereService } from 'src/app/shared/matiere.service';
+import { SnackBarComponent } from 'src/app/shared/snack-bar.component';
 import { Assignment } from '../../model/assignment.model';
 
 @Component({
@@ -29,6 +31,7 @@ export class EditAssignmentComponent implements OnInit {
               private matiereService:MatiereService,
               private etudiantService:EtudiantService,
               private authService:AuthService,
+              private _snackBar: MatSnackBar,
               private assignmentService:AssignmentsService) { }
 
   ngOnInit(): void {
@@ -57,6 +60,10 @@ export class EditAssignmentComponent implements OnInit {
     this.assignmentService.updateAssignment(this.assignment).subscribe((message) =>{
       console.log(message);
 
+      this._snackBar.openFromComponent(SnackBarComponent, {
+        duration: 3000,
+        data:'Assignment modifié'
+      })
       // navigation vers la home page
       this.router.navigate(['/home']);
     });

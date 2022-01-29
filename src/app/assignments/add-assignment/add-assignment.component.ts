@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { AuthService } from 'src/app/shared/auth.service';
+import { SnackBarComponent } from 'src/app/shared/snack-bar.component';
 import { Assignment } from '../../model/assignment.model'
 
 interface Etu{
@@ -43,6 +45,7 @@ export class AddAssignmentComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private _snackBar: MatSnackBar,
     private assignmentService:AssignmentsService,
     private router:Router) { }
 
@@ -63,6 +66,10 @@ export class AddAssignmentComponent implements OnInit {
 
     this.assignmentService.addAssignment(assignmentNouveau).subscribe(message => {
       console.log(message);
+      this._snackBar.openFromComponent(SnackBarComponent, {
+        duration: 3000,
+        data:'Assignment ajouté'
+      })
       this.router.navigate(['/home'])
     })
   }

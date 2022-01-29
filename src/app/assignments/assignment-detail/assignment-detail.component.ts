@@ -8,6 +8,8 @@ import { Assignment } from '../../model/assignment.model';
 import { EtudiantService } from 'src/app/shared/etudiant.service';
 import { Etudiant } from 'src/app/model/etudiant.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SnackBarComponent } from 'src/app/shared/snack-bar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 interface DialogData {
@@ -31,7 +33,8 @@ export class AssignmentDetailComponent implements OnInit {
     private authService:AuthService,
     public dialog: MatDialog,
     private matiereService:MatiereService,
-    private etudiantService:EtudiantService) { }
+    private etudiantService:EtudiantService,
+    private _snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.getAssignment()
@@ -57,9 +60,16 @@ export class AssignmentDetailComponent implements OnInit {
         if(result.admin){
           console.log('mot de passe correct ... supression de l\'assignment');
           this.onDelete();
+          this._snackBar.openFromComponent(SnackBarComponent, {
+            duration: 3000,
+            data:'Assignement supprimé'
+          })
         }
         else{
-          console.log('mot de passe incorrect');
+          this._snackBar.openFromComponent(SnackBarComponent, {
+            duration: 3000,
+            data:'Mot de passe incorrect'
+          })
         }
       });
     });
@@ -72,15 +82,16 @@ export class AssignmentDetailComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(adminPassword => {
-      console.log(adminPassword)
       this.authService.checkAdmin(adminPassword).subscribe(result => {
         if(result.admin){
           this.authService.isAdmin();
-          console.log('mot de passe correct');
           this.onClickEdit();
         }
         else{
-          console.log('mot de passe incorrect');
+          this._snackBar.openFromComponent(SnackBarComponent, {
+            duration: 3000,
+            data:'Mot de passe incorrect'
+          })
         }
       });
     });
