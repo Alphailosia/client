@@ -29,7 +29,7 @@ export class AuthComponent implements OnInit {
         })
         this.route.navigate(['/home'])
       }
-      else{
+      else if(data.message) {
         this._snackBar.openFromComponent(SnackBarComponent, {
           duration: 3000,
           data: 'mauvais identifiants'
