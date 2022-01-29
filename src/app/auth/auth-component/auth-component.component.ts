@@ -34,6 +34,7 @@ export class AuthComponent implements OnInit {
           duration: 3000,
           data: 'mauvais identifiants'
         })        
+        this.route.navigate([''])
       }
     })
   }
