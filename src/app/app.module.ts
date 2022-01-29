@@ -29,6 +29,7 @@ import { AuthComponent } from './auth/auth-component/auth-component.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes:Routes = [
   {path:'', component:AuthComponent},
@@ -55,7 +56,7 @@ const routes:Routes = [
     MatButtonModule, MatIconModule, MatDividerModule,
     MatInputModule,MatDatepickerModule,MatNativeDateModule,
     MatListModule,MatCardModule,MatCheckboxModule, MatSlideToggleModule, HttpClientModule, MatPaginatorModule, MatRadioModule,
-    FormsModule, MatTableModule, RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
+    FormsModule, MatTableModule, MatSnackBarModule, RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
   providers: [],
   bootstrap: [AppComponent]

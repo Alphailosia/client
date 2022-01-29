@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from 'src/app/shared/snack-bar.component';
 
 @Component({
   selector: 'app-auth-component',
@@ -9,40 +11,51 @@ import { AuthService } from 'src/app/shared/auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private authService:AuthService,
-              private route:Router) { }
+  constructor(private authService: AuthService,
+    private _snackBar: MatSnackBar,
+    private route: Router) { }
 
   connexion = false;
   name = "";
   email = "";
   password = "";
 
-  connect(){
-    this.authService.logIn(this.email,this.password).subscribe( data => {
-      if(data.auth){
+  connect() {
+    this.authService.logIn(this.email, this.password).subscribe(data => {
+      if (data.auth) {
+        this._snackBar.openFromComponent(SnackBarComponent, {
+          duration: 3000,
+          data:'connexion réussie'
+        })
+        this.route.navigate(['/home'])
+      }
+      else{
+        this._snackBar.openFromComponent(SnackBarComponent, {
+          duration: 3000,
+          data: 'mauvais identifiants'
+        })        
+      }
+    })
+  }
+
+  register() {
+    this.authService.register(this.name, this.email, this.password).subscribe(data => {
+      if (data.auth) {
         this.route.navigate(['/home'])
       }
     })
   }
 
-  register(){
-    this.authService.register(this.name,this.email,this.password).subscribe( data => {
-      if(data.auth){
-        this.route.navigate(['/home'])
-      }
-    })
-  }
-
-  validate(){
-    if(this.connexion){
-      this.connect()
-    }
-    else{
+  validate() {
+    if (this.connexion) {
       this.register()
     }
+    else {
+      this.connect()
+    }
   }
 
-  change(){
+  change() {
     this.connexion = !this.connexion;
   }
 
