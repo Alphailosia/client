@@ -41,11 +41,21 @@
   <div>
     <h2>Liste des assignments :</h2>
     <!--filtre-->
-    <mat-radio-group [(ngModel)]="estRendu" (ngModelChange)='getAssignments()'>
-      <mat-radio-button value="tous">Tous </mat-radio-button>
-      <mat-radio-button value="rendu">Rendu </mat-radio-button>
-      <mat-radio-button value="nonRendu">Non Rendu </mat-radio-button>
-    </mat-radio-group>
+    <mat-select [(ngModel)]="estRendu" (focus)='getAssignments()'>
+      <mat-option *ngFor="let type of types" [value]="type.value">
+        {{type.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-select [(ngModel)]="etudiant" (focus)='getAssignments()'>
+      <mat-option *ngFor="let student of students" [value]="student.value">
+        {{student.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-select [(ngModel)]="matiere" (focus)='getAssignments()'>
+      <mat-option *ngFor="let matiere of matieresTab" [value]="matiere.value">
+        {{matiere.viewValue}}
+      </mat-option>
+    </mat-select>
     <!--pagination-->
 
 
