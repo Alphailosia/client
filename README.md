@@ -4,6 +4,9 @@
 Stéphane Désiré  
 Sabrina Mercuri  
 
+### Lancer la partie client : 
+`ng serve`
+
 ### Fonctionnalités :  
 
 - Gestion login/password (connexion et inscription avec authentification à l'aide de Json Web Tokens)   
@@ -13,9 +16,9 @@ Sabrina Mercuri
 - Ajout d'un champ de recherche (sur le nom de l'assignment uniquement)  
 
 
-### Fonctionnalités optionnelles : 
+### Fonctionnalités supplémentaires : 
 - Ajout d'un formulaire stepper (pour l'ajout d'assignment)
-- Pouvoir éditer un assignment : sur le nom, la date de rendu, la note, remarque   
+- Pouvoir éditer un assignment sur le nom, la date de rendu, la note, remarque   
 - Ajout d'un mot de passe pour pouvoir éditer et supprimer un assignment `(mot de passe = admin)`   
 
 
