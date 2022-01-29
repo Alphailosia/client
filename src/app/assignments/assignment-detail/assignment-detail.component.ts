@@ -65,6 +65,27 @@ export class AssignmentDetailComponent implements OnInit {
     });
   }
 
+  openEditDialog() {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog,{
+      width: '30%',
+      data:{admin:this.passwordAdmin}
+    })
+
+    dialogRef.afterClosed().subscribe(adminPassword => {
+      console.log(adminPassword)
+      this.authService.checkAdmin(adminPassword).subscribe(result => {
+        if(result.admin){
+          this.authService.isAdmin();
+          console.log('mot de passe correct');
+          this.onClickEdit();
+        }
+        else{
+          console.log('mot de passe incorrect');
+        }
+      });
+    });
+  }
+
   onDelete(){
     this.assignmentService.onDelete(this.assignmentTransmis!).subscribe(reponse => {
       console.log(reponse.message);
@@ -74,8 +95,7 @@ export class AssignmentDetailComponent implements OnInit {
   }
 
   onClickEdit(){
-    this.router.navigate(['/assignment/'+this.assignmentTransmis?.id+'/edit'],
-    {queryParams:{name:'desire',prenom:'stephane'}, fragment:'edit'})
+    this.router.navigate(['/assignment/'+this.assignmentTransmis?.id+'/edit'])
   }
 
   getAssignment(){
@@ -83,11 +103,9 @@ export class AssignmentDetailComponent implements OnInit {
     this.assignmentService.getAssignment(id).subscribe( assignment => {
       this.assignmentTransmis=assignment;
       this.matiereService.getMatiere(this.assignmentTransmis!.matiere).subscribe( data => {
-        console.log(data)
         this.matiere = data;
       });
       this.etudiantService.getEtudiant(this.assignmentTransmis!.etudiant).subscribe( data => {
-        console.log(data)
         this.etudiant = data;
       });
     })

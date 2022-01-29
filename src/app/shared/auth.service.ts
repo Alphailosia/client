@@ -32,6 +32,11 @@ export class AuthService {
   }
 
   checkAdmin(password:string):Observable<any>{
+    this.httpClient.get<any>(this.url+'admin',{params:{'password':password}}).subscribe(response =>{
+      if(response.admin){
+        this.admin=true
+      }
+    })
     return this.httpClient.get<any>(this.url+'admin',{params:{'password':password}})
   }
 
