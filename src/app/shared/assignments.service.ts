@@ -83,7 +83,18 @@ export class AssignmentsService {
         return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':false,'nomAssignment':nomAssignment,'matiere':matiere,'etudiant':etudiant}});
       }
       default:{
-        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'nomAssignment':nomAssignment,'matiere':matiere,'etudiant':etudiant}});
+        if(matiere==0 && etudiant==0){
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'nomAssignment':nomAssignment,'matiere':'undefined','etudiant':'undefined'}});
+        }
+        else if(matiere==0 && etudiant!=0){
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'nomAssignment':nomAssignment,'matiere':'undefined','etudiant':etudiant}});
+        }
+        else if(matiere!=0 && etudiant==0){
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'nomAssignment':nomAssignment,'matiere':matiere,'etudiant':'undefined'}});
+        }
+        else{
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'nomAssignment':nomAssignment,'matiere':matiere,'etudiant':etudiant}});
+        }
       }
     }
   }

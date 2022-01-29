@@ -51,6 +51,7 @@ export class AssignmentsComponent implements OnInit {
     {value:'nonRendu',viewValue:'Non rendu'},
   ];
   students: Etu[] = [
+    {value:0,viewValue:'Tous les étudiants'},
     {value:1,viewValue:'Désiré Stéphane'},
     {value:2,viewValue:'Mercuri Sabrina'},
     {value:3,viewValue:'Delachambre Johanna'},
@@ -59,14 +60,15 @@ export class AssignmentsComponent implements OnInit {
     {value:6,viewValue:'Bydon Sacha'},
     {value:7,viewValue:'Duvois Allan'}
   ];
-  etudiant!: number;
+  etudiant: number=0;
   matieresTab: Mat[] = [
+    {value:0,viewValue:'Toutes les matières'},
     {value:1,viewValue:'Base de données'},
     {value:2,viewValue:'Développement Web'},
     {value:3,viewValue:'Développement logiciel'},
     {value:4,viewValue:'Management de projet'}
   ];
-  matiere!: number;
+  matiere: number=0;
   nomAssignment: string='';
 
   constructor(

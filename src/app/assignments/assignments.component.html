@@ -40,7 +40,7 @@
   </div>
   <div>
     <h2>Liste des assignments :</h2>
-   
+
     <!--filtre-->
     <div class="div-filtre">
       <p class="title-filtre">Filtres : </p>
@@ -49,12 +49,12 @@
         {{type.viewValue}}
       </mat-option>
     </mat-select>
-    <mat-select placeholder="Etudiant" [(ngModel)]="etudiant" (focus)='getAssignments()'>
+    <mat-select [(ngModel)]="etudiant" (focus)='getAssignments()'>
       <mat-option *ngFor="let student of students" [value]="student.value">
         {{student.viewValue}}
       </mat-option>
     </mat-select>
-    <mat-select placeholder="Matière" [(ngModel)]="matiere" (focus)='getAssignments()'>
+    <mat-select [(ngModel)]="matiere" (focus)='getAssignments()'>
       <mat-option *ngFor="let matiere of matieresTab" [value]="matiere.value">
         {{matiere.viewValue}}
       </mat-option>
@@ -100,8 +100,8 @@
       <tr mat-row (click)="goToDetail(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
       <!--</a></nav>-->
     </table>
-    
-    
+
+
     <!--pagination-->
     <mat-paginator [length]="totalDocs" [pageSize]="limit" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"
       (page)="onChangePage($event)">
