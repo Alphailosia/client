@@ -35,10 +35,10 @@ export class EditAssignmentComponent implements OnInit {
               private assignmentService:AssignmentsService) { }
 
   ngOnInit(): void {
-    // recup query params
     this.getAssignment();
   }
 
+  // sauvegarde l'assignment
   onSaveAssignment() {
     if (!this.assignment) return;
 
@@ -58,13 +58,11 @@ export class EditAssignmentComponent implements OnInit {
       this.assignment.remarque = this.remarque;
     }
     this.assignmentService.updateAssignment(this.assignment).subscribe((message) =>{
-      console.log(message);
-
       this._snackBar.openFromComponent(SnackBarComponent, {
         duration: 3000,
         data:'Assignment modifié'
       })
-      // navigation vers la home page
+      // navigation vers la home page quand l'assignment est modifié
       this.router.navigate(['/home']);
     });
   }

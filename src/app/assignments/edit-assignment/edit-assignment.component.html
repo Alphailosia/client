@@ -1,5 +1,6 @@
 <div class="body">
   <div class="home-div">
+    <!--Nav home et deconnexion-->
     <nav>
       <a routerLink="/home">
         <mat-icon class="home" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
@@ -8,6 +9,7 @@
     </nav>
   </div>
 
+  <!--Détails de l'assignment-->
   <mat-card *ngIf="assignment && matiere && etudiant" >
 
     <h1>Détails de l'assignement</h1>
@@ -20,7 +22,7 @@
 
     <br>
     <h2>Devoir</h2>
-
+    <!--Formulaire pour éditer un devoir-->
     <div class="wrap">
       <div class="contenu">
         <p> Type de devoir : <input matInput placeholder="Edition du nom" [(ngModel)]="nomAssignment" name="assignment-name"></p>
@@ -37,10 +39,6 @@
         </p>
       </div>
     </div>
-    <nav>
-      <!-- ou juste ['/assignment',assignmentTransmis.id,'edit'] = absolue  ou  [routerLink]="['edit']" = relatif -->
-
-    </nav>
     <br>
     <h2>Matière</h2>
 
@@ -56,6 +54,7 @@
     </div>
     <br>
     <br>
+    <!--Bouton pour sauvegarder les changements-->
     <div id="bottom">
       <button mat-raised-button color="primary" (click)="onSaveAssignment()">Sauvegarder</button>
     </div>

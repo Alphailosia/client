@@ -9,7 +9,8 @@ import { bdInitialAssignments } from './data';
 })
 export class AssignmentsService {
 
-  url = 'http://localhost:8010/api/assignments'//'https://angular-intense-app.herokuapp.com/api/assignments';
+  url = 'https://angular-intense-app.herokuapp.com/api/assignments'
+  //'http://localhost:8010/api/assignments' url à utiliser pour le test en local;
 
   constructor(private httpClient:HttpClient) { }
 
@@ -23,11 +24,9 @@ export class AssignmentsService {
 
   updateAssignment(assignment:Assignment):Observable<string>{
     return this.httpClient.put<string>(this.url,assignment);
-    // plus tard requete put sur web service pour mettre a jour une bd distante
   }
 
   onDelete(assignment:Assignment):Observable<any>{
-    //this.assignments.splice(this.assignments.indexOf(assignment),1)
     return this.httpClient.delete<string>(this.url+'/'+assignment._id);
   }
 
@@ -74,13 +73,34 @@ export class AssignmentsService {
   }
 
   getAssignmentsPagine(page:number,limit:number,estRendu:string, nomAssignment:string, matiere:number, etudiant:number):Observable<any>{
-    console.log(estRendu+' '+matiere+' '+etudiant)
     switch(estRendu){
       case 'rendu':{
-        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':true,'nomAssignment':nomAssignment,'matiere':matiere,'etudiant':etudiant}});
+        if(matiere==0 && etudiant==0){
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':true,'nomAssignment':nomAssignment,'matiere':'undefined','etudiant':'undefined'}});
+        }
+        else if(matiere==0 && etudiant!=0){
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':true,'nomAssignment':nomAssignment,'matiere':'undefined','etudiant':etudiant}});
+        }
+        else if(matiere!=0 && etudiant==0){
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':true,'nomAssignment':nomAssignment,'matiere':matiere,'etudiant':'undefined'}});
+        }
+        else{
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':true,'nomAssignment':nomAssignment,'matiere':matiere,'etudiant':etudiant}});
+        }
       }
       case 'nonRendu':{
-        return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':false,'nomAssignment':nomAssignment,'matiere':matiere,'etudiant':etudiant}});
+        if(matiere==0 && etudiant==0){
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':false,'nomAssignment':nomAssignment,'matiere':'undefined','etudiant':'undefined'}});
+        }
+        else if(matiere==0 && etudiant!=0){
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':false,'nomAssignment':nomAssignment,'matiere':'undefined','etudiant':etudiant}});
+        }
+        else if(matiere!=0 && etudiant==0){
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':false,'nomAssignment':nomAssignment,'matiere':matiere,'etudiant':'undefined'}});
+        }
+        else{
+          return this.httpClient.get<any>(this.url,{params:{'page':page,'limit':limit,'estRendu':false,'nomAssignment':nomAssignment,'matiere':matiere,'etudiant':etudiant}});
+        }
       }
       default:{
         if(matiere==0 && etudiant==0){

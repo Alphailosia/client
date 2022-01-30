@@ -8,7 +8,8 @@ import { Matiere } from '../model/matiere.model';
 })
 export class MatiereService {
 
-  url = 'http://localhost:8010/api/matieres'//'https://angular-intense-app.herokuapp.com/api/matieres';
+  url = 'https://angular-intense-app.herokuapp.com/api/matieres';
+  //'http://localhost:8010/api/matieres' url à utiliser pour le test en local;
 
   constructor(private httpClient:HttpClient) { }
 

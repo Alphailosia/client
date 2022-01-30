@@ -90,7 +90,6 @@ export class AssignmentsComponent implements OnInit {
 
   assignmentClique(assignment:any){
     this.assignmentSelectione=assignment;
-    console.log(this.assignmentSelectione)
   }
 
   goToDetail(row:any){

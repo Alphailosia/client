@@ -1,5 +1,6 @@
 <div class="body">
 <div class="home-div">
+  <!--Nav home et deconnexion-->
   <nav>
     <a routerLink="/home">
       <mat-icon class="home" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
@@ -8,8 +9,8 @@
   </nav>
 </div>
 
+<!--Détails de l'assignment-->
 <mat-card *ngIf="assignmentTransmis && matiere && etudiant" >
-
   <h1>Détails de l'assignement</h1>
 
   <h2>Etudiant</h2>
@@ -31,10 +32,6 @@
       <p [ngClass]="{'success':assignmentTransmis.rendu,'danger':!assignmentTransmis.rendu}"> Remarque : {{ assignmentTransmis.remarque}}</p>
     </div>
   </div>
-  <nav>
-    <!-- ou juste ['/assignment',assignmentTransmis.id,'edit'] = absolue  ou  [routerLink]="['edit']" = relatif -->
-
-  </nav>
   <br>
   <h2>Matière</h2>
 
@@ -50,6 +47,7 @@
   </div>
   <br>
   <br>
+  <!--Boutons pour rendre, éditer et supprimer l'assignement-->
   <div id="bottom">
     <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()" [disabled]="assignmentTransmis.note==undefined">Rendu</mat-checkbox>
     <button mat-stroked-button color="primary" (click)="openEditDialog()" [disabled]="assignmentTransmis.note!=undefined">Edit</button>

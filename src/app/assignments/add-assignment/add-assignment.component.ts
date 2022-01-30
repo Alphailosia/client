@@ -52,8 +52,8 @@ export class AddAssignmentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // ajout dans la base de données de l'assignment
   onSubmit() {
-    console.log(this.nomDevoir + " " + this.dateDeRendu)
     const assignmentNouveau = new Assignment();
     assignmentNouveau.id = Math.round(Math.random()*100000000)
     assignmentNouveau.nom = this.nomDevoir;
@@ -65,7 +65,6 @@ export class AddAssignmentComponent implements OnInit {
     assignmentNouveau.remarque = "";
 
     this.assignmentService.addAssignment(assignmentNouveau).subscribe(message => {
-      console.log(message);
       this._snackBar.openFromComponent(SnackBarComponent, {
         duration: 3000,
         data:'Assignment ajouté'

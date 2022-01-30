@@ -20,6 +20,7 @@ export class AuthComponent implements OnInit {
   email = "";
   password = "";
 
+  // connexion de l'utilisateur
   connect() {
     this.authService.logIn(this.email, this.password).subscribe(data => {
       if (data.auth) {
@@ -39,6 +40,7 @@ export class AuthComponent implements OnInit {
     })
   }
 
+  // inscription de l'utilisateur
   register() {
     this.authService.register(this.name, this.email, this.password).subscribe(data => {
       if (data.auth) {
@@ -60,6 +62,7 @@ export class AuthComponent implements OnInit {
     }
   }
 
+  // changement entre le mode de connexion et le mode inscription
   change() {
     this.connexion = !this.connexion;
   }

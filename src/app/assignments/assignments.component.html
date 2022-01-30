@@ -1,6 +1,7 @@
 <div class="body">
 
   <div class="home-div">
+    <!--Nav home et deconnexion-->
     <nav>
       <a routerLink="/home">
         <mat-icon class="home" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
@@ -10,29 +11,7 @@
   </div>
 
   <h1>{{titre}}</h1>
-  <!--<form ngForm #assignmentForm>
-  <button
-  [disabled]="ajoutDesactive"
-  mat-stroked-button
-         color="primary">
-    Ajouter un devoir
-  </button>
-</form>
-<form ngForm #assignmentForm class="form">
-  <mat-form-field>
-      <input matInput #nomAssignment>
-  </mat-form-field>
-
-  <button
-      mat-stroked-button
-      color="primary"
-      [disabled]="ajoutDesactive"
-  >
-  Ajout
-</button>
-</form>
-[ngClass]="{'rendu' : assignment.rendu, 'nonRendu' : !assignment.rendu, 'important':!assignment.rendu}"
--->
+  <!--input pour la recherche-->
   <div class="search-div">
     <input class="search" matInput placeholder="Recherche" [(ngModel)]="nomAssignment" (input)='getAssignments()'
       name="assignment-name">
@@ -41,7 +20,7 @@
   <div>
     <h2>Liste des assignments :</h2>
 
-    <!--filtre-->
+    <!--filtres-->
     <div class="div-filtre">
       <p class="title-filtre">Filtres : </p>
     <mat-select [(ngModel)]="estRendu" (focus)='getAssignments()'>
@@ -61,9 +40,8 @@
     </mat-select>
   </div>
 
-
+    <!--Affichage des assignment dans une table material-->
     <table mat-table [dataSource]="assignments" class="mat-elevation-z8">
-      <!--<nav><a routerLink="/assignment/{{element.id}}">-->
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -98,7 +76,6 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row (click)="goToDetail(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
-      <!--</a></nav>-->
     </table>
 
 
@@ -110,23 +87,6 @@
     <div class="ajout-div">
       <p class="ajout">Nouvel assignment : </p>
     <a routerLink="/add"><button mat-flat-button color="primary">Ajouter</button></a>
-  </div>
-    <!--<mat-list *ngFor="let assignment of assignments">
-  <nav><a routerLink="/assignment/{{assignment.id}}">
-  <h3 mat-subheader>Date de rendu : {{assignment.dateDeRendu | date}}</h3>
-  <mat-list-item (click)="assignmentClique(assignment)"
-    [ngClass]="{'rendu' : assignment.rendu, 'nonRendu' : !assignment.rendu, 'important':!assignment.rendu}">
-    <p *ngIf="assignment.rendu; else nonsoumis">
-      {{assignment.nom}} a été rendu par l'élève.
-    </p>-->
-    <!-- appRendu -->
-    <!--<ng-template #nonsoumis>
-      <p>{{assignment.nom}} non rendu</p>
-    </ng-template>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-</a></nav>
-</mat-list>-->
-
+    </div>
   </div>
 </div>

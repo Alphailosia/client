@@ -40,14 +40,15 @@ export class AssignmentDetailComponent implements OnInit {
     this.getAssignment()
   }
 
+  // l'assignment est marqué comme rendu
   onAssignmentRendu(){
     this.assignmentTransmis!.rendu = true;
     this.assignmentService.updateAssignment(this.assignmentTransmis!).subscribe(message => {
-      console.log(message)
       this.router.navigate(['/home'])
     })
   }
 
+  // ouverture de la dialog pour la supression de l'assignment
   openDeleteDialog() {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog,{
       width: '30%',
@@ -75,6 +76,7 @@ export class AssignmentDetailComponent implements OnInit {
     });
   }
 
+  // ouverture de la dialog pour l'édition de l'assignment
   openEditDialog() {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog,{
       width: '30%',
@@ -129,6 +131,7 @@ export class AssignmentDetailComponent implements OnInit {
 
 }
 
+// component de la fenêtre de dialog pour rentrer le mot de passe administrateur
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: './dialog-delete-template.html',
