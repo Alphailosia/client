@@ -118,6 +118,7 @@ export class AssignmentsComponent implements OnInit {
 
   getAssignments(){
       this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.estRendu, this.nomAssignment, this.matiere, this.etudiant).subscribe(data => {
+      console.log(data)
       this.assignments = data.docs;
       this.page = data.page;
       this.limit = data.limit;
