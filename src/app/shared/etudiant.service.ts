@@ -8,7 +8,7 @@ import { Etudiant } from '../model/etudiant.model';
 })
 export class EtudiantService {
 
-  url = 'https://angular-intense-app.herokuapp.com/api/etudiant'
+  url = 'https://angular-intense-app.herokuapp.com/api/etudiants'
   //'http://localhost:8010/api/etudiants' url à utiliser pour le test en local;
 
   constructor(private httpClient:HttpClient) { }
