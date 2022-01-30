@@ -41,7 +41,7 @@
   </div>
 
     <!--Affichage des assignment dans une table material-->
-    <table mat-table [dataSource]="assignments" class="mat-elevation-z8">
+    <table mat-table [dataSource]="assignments" class="mat-elevation-z8" *ngIf="matieres && etudiants">
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> Id </th>

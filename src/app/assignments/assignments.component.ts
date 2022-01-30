@@ -109,11 +109,21 @@ export class AssignmentsComponent implements OnInit {
   }
 
   getNomMatiere(element:any){
-    return this.matieres.find(n => n.id === element.matiere)!.nom
+    for(let matiere of this.matieres){
+      if(matiere.id==element.matiere){
+        return matiere.nom
+      }
+    }
+    return '';
   }
 
   getNomEtudiant(element:any){
-    return this.etudiants.find(n => n.id === element.etudiant)!.nom+" "+this.etudiants.find(n => n.id === element.etudiant)!.prenom
+    for(let etudiant of this.etudiants){
+      if(etudiant.id==element.matiere){
+        return etudiant.nom+' '+etudiant.prenom
+      }
+    }
+    return '';
   }
 
   getAssignments(){
