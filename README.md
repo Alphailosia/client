@@ -6,11 +6,13 @@ Sabrina Mercuri
 
 ### Lien heroku :  
 https://client-angular-app.herokuapp.com/  
+(se créer un compte ou utiliser un compte déjà créé (email = `toto@toto.com`  mdp = `toto`)  
 
 ### Lancer la partie client en local :  
 - changer les url heroku par les url localhost en commentaire (sur les fichers assignment.service.ts, etudiant.service.ts, matiere.service.ts, auth.service.ts)  
 - penser à faire `npm i`  
 - lancer avec : `ng serve`  
+- se créer un compte ou utiliser un compte déjà créé (email = `toto@toto.com`  mdp = `toto`) 
 
 ### Fonctionnalités :  
 
