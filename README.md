@@ -6,6 +6,7 @@ Sabrina Mercuri
 
 ### Lien heroku :  
 https://client-angular-app.herokuapp.com/  
+(mettre les routes pour afficher ce que l'on veut -> voir fichier `server.js`)
 
 ### Lancer la partie client en local :  
 - changer les url heroku par les url localhost en commentaire (sur les fichers assignment.service.ts, etudiant.service.ts, matiere.service.ts, auth.service.ts)  
