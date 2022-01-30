@@ -7,7 +7,8 @@ import { Observable, of } from 'rxjs';
 })
 export class AuthService {
 
-  url = 'http://localhost:8010/api/'//'https://angular-intense-app.herokuapp.com/api/';
+  url = 'https://angular-intense-app.herokuapp.com/api/'
+  //'http://localhost:8010/api/' url à utiliser pour le test en local;
   auth = false;
   admin = false
 
