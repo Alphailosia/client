@@ -23,6 +23,7 @@ export class AuthComponent implements OnInit {
   // connexion de l'utilisateur
   connect() {
     this.authService.logIn(this.email, this.password).subscribe(data => {
+      console.log(data)
       if (data.auth) {
         this._snackBar.openFromComponent(SnackBarComponent, {
           duration: 3000,
@@ -30,11 +31,18 @@ export class AuthComponent implements OnInit {
         })
         this.route.navigate(['/home'])
       }
+      else{
+        this._snackBar.openFromComponent(SnackBarComponent, {
+          duration: 3000,
+          data:'Mauvais identifiant'
+        })
+      }
     },
     error =>{
+      console.log(error)
       this._snackBar.openFromComponent(SnackBarComponent, {
         duration: 3000,
-        data: error.error
+        data: 'Mauvais identifiant'
       })
       this.route.navigate([''])
     })

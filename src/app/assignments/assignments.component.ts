@@ -119,7 +119,7 @@ export class AssignmentsComponent implements OnInit {
 
   getNomEtudiant(element:any){
     for(let etudiant of this.etudiants){
-      if(etudiant.id==element.matiere){
+      if(etudiant.id==element.etudiant){
         return etudiant.nom+' '+etudiant.prenom
       }
     }
